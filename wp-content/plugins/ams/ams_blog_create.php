@@ -1,6 +1,6 @@
 <?php
 
-function sinetiks_schools_create() {
+function ams_blog_create() {
     $id = $_POST["id"];
     $name = $_POST["name"];
     //insert
