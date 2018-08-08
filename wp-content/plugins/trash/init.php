@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: AMS - Ads Management System by Nokengo
+Plugin Name: TRASH
 Plugin URI: http://nokengo.com/
 Description: An advertising management system for WordPress.
 Version: 0.0.1
