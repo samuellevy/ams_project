@@ -5,7 +5,7 @@ register_activation_hook(__FILE__, 'install');
 //menu items
 add_action('admin_menu','ams_menu');
 
-function install() {
+function install_blogs() {
     global $wpdb;
 
     $table_name = $wpdb->prefix . "ams_blogs";
@@ -25,7 +25,11 @@ function install() {
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
+}
 
+function install_ads(){
+    global $wpdb;
+    
     $table_name = $wpdb->prefix . "ams_anuncios";
     $charset_collate = $wpdb->get_charset_collate();
     $sql = "CREATE TABLE $table_name (
