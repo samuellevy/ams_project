@@ -2,4 +2,7 @@
 .ss-list-width {min-width:10%}
 .ss-form-width {width:100%}
 .ss-th-width {width:25%}
-.ss-field-width {width:75%}
+.ss-field-width {width:75%;}
+textarea.ss-field-width{
+    height: 100px;
+}
