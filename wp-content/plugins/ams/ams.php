@@ -19,9 +19,14 @@ require_once(ROOTDIR . 'includes/ads_create.php');
 require_once(ROOTDIR . 'includes/ads_list.php');
 require_once(ROOTDIR . 'includes/ads_update.php');
 
+require_once(ROOTDIR . 'includes/categories_create.php');
+require_once(ROOTDIR . 'includes/categories_list.php');
+require_once(ROOTDIR . 'includes/categories_update.php');
+
 function install(){
     install_blog();
     install_ads();
+    install_categories();
 }
 
 function install_blog()
@@ -53,14 +58,32 @@ function install_ads(){
     $table_name = $wpdb->prefix . "ams_anuncios";
     $charset_collate = $wpdb->get_charset_collate();
     $sql = "CREATE TABLE $table_name (
-        `id` varchar(11) CHARACTER SET utf8 NULL,
-        `file` varchar(255) CHARACTER SET utf8 NULL,
-        `text` TEXT CHARACTER SET utf8 NULL,
-        `url` varchar(255) CHARACTER SET utf8 NULL,
-        `value` varchar(255) CHARACTER SET utf8 NULL,
-        `category` varchar(255) CHARACTER SET utf8 NULL,
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+        `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+        `value` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+        `text` text CHARACTER SET utf8 DEFAULT NULL,
+        `file_id` int(11) DEFAULT NULL,
+        `file_url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+        `category_id` int(11) DEFAULT NULL,
         PRIMARY KEY (`id`)
         ) $charset_collate; ";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta($sql);
+}
+
+function install_categories(){
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . "ams_categories";
+    $charset_collate = $wpdb->get_charset_collate();
+    $sql = "CREATE TABLE $table_name (
+        `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+        `name` varchar(255) DEFAULT NULL,
+        PRIMARY KEY (`id`)
+        ) $charset_collate; ";
+
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta($sql);
 }

@@ -1,6 +1,6 @@
 <?php
-
 function ams_ads_create() {
+    global $wpdb;
     $name = '';
     //insert
     // var_dump($_POST);
@@ -22,8 +22,6 @@ function ams_ads_create() {
             }
         }
 
-
-        global $wpdb;
         $table_name = $wpdb->prefix . "ams_anuncios";
 
         $wpdb->insert(
@@ -60,9 +58,18 @@ function ams_ads_create() {
                     <th class="ss-th-width">Valor</th>
                     <td><input type="text" name="value" class="ss-field-width" /></td>
                 </tr>
+                <?php
+                $categories = $wpdb->get_results("SELECT * from wp_ams_categories");
+                ?>
                 <tr>
                     <th class="ss-th-width">Categoria</th>
-                    <td><input type="text" name="category_id" class="ss-field-width" /></td>
+                    <td>
+                    <select name='category_id'>
+                        <?php foreach($categories as $category):?>
+                            <option value='<?=$category->id;?>'><?=$category->name;?></option>
+                        <?php endforeach;?>
+                    </select>
+                    </td>
                 </tr>
                 <tr>
                     <th class="ss-th-width">Texto</th>
