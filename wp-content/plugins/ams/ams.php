@@ -15,6 +15,10 @@ require_once(ROOTDIR . 'includes/blogs_create.php');
 require_once(ROOTDIR . 'includes/blogs_list.php');
 require_once(ROOTDIR . 'includes/blogs_update.php');
 
+require_once(ROOTDIR . 'includes/ads_create.php');
+require_once(ROOTDIR . 'includes/ads_list.php');
+require_once(ROOTDIR . 'includes/ads_update.php');
+
 function install(){
     install_blog();
     install_ads();
