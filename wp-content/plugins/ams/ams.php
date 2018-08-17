@@ -23,6 +23,8 @@ require_once(ROOTDIR . 'includes/categories_create.php');
 require_once(ROOTDIR . 'includes/categories_list.php');
 require_once(ROOTDIR . 'includes/categories_update.php');
 
+require_once(ROOTDIR . 'includes/campaign_create.php');
+
 function install(){
     install_blog();
     install_ads();

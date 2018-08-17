@@ -60,6 +60,22 @@ function ams_menu() {
 	'ams_categories_list', //menu slug
 	'ams_categories_list'); //function
 
+	// AMS CAMPAIGNs
+	add_menu_page('AMS', //page title
+	'AMS - Campanhas', //menu title
+	'manage_options', //capabilities
+	'ams_campaigns', //menu slug
+	'ams_campaigns_list' //function
+	);
+	
+	add_submenu_page('ams_campaigns', //parent slug
+	'Adicionar campanha', //page title
+	'Nova campanha', //menu title
+	'manage_options', //capability
+	'ams_campaign_create', //menu slug
+	'ams_campaign_create'); //function
+
+
 	// ALL UPDATES
     add_submenu_page(null, //parent slug
 	'Update blogs', //page title
