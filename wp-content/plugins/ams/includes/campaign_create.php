@@ -75,7 +75,7 @@ function ams_campaign_create() {
                 <tr>
                     <th class="ss-th-width">Anúncio</th>
                     <td>
-                    <select name='category_id'>
+                    <select name='category_id' multiple>
                         <?php foreach($ads as $ad):?>
                             <option value='<?=$ad->id;?>'>#<?=$ad->id;?> - <?=$ad->title;?></option>
                         <?php endforeach;?>
