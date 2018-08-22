@@ -22,7 +22,8 @@ function ams_campaign_create() {
                 'blog_id' => $_POST['blog_id'],
                 'owner' => $_POST['owner'],
                 'obs' => $_POST['obs'],
-                'date' => gmdate("Y-m-d H:i:s", $timestamp)
+                'date' => gmdate("Y-m-d H:i:s", $timestamp),
+                'token' => uniqid()
             ),
             array('%s', '%s') //data format			
         );

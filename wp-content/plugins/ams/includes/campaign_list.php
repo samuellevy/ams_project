@@ -17,11 +17,11 @@ function ams_campaign_list() {
         $ads_table = $wpdb->prefix . "ams_anuncios";
 
         $campaigns = $wpdb->get_results("SELECT * from $table_name");
-        $ads = $wpdb->get_results("SELECT * from $ads_table");
+        // $ads = $wpdb->get_results("SELECT * from $ads_table");
         
-        echo('<pre>');
-        var_dump($ads);
-        echo('</pre>');
+        // echo('<pre>');
+        // var_dump($ads);
+        // echo('</pre>');
         ?>
         <table class='wp-list-table widefat fixed striped posts'>
             <tr>
@@ -32,7 +32,6 @@ function ams_campaign_list() {
                 <th class="manage-column ss-list-width">Meta de clicks</th>
                 <th class="manage-column ss-list-width">Blog</th>
                 <th class="manage-column ss-list-width">Responsável pagamento</th>
-                <th class="manage-column ss-list-width">Anúncios</th>
                 <th class="manage-column ss-list-width">Data</th>
                 <th>&nbsp;</th>
             </tr>
@@ -45,7 +44,6 @@ function ams_campaign_list() {
                     <td class="manage-column ss-list-width"><?php echo $campaign->click_goal; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->blog_id; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->owner; ?></td>
-                    <td class="manage-column ss-list-width"><?php echo $campaign->status; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->date; ?></td>
                     <td><a href="<?php echo admin_url('admin.php?page=blogs_update&id=' . $campaign->id); ?>">Update</a></td>
                 </tr>
