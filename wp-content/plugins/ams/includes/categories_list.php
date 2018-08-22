@@ -4,7 +4,7 @@ function ams_categories_list() {
     ?>
     <link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/ams/style-admin.css" rel="stylesheet" />
     <div class="wrap">
-        <h2>Schools</h2>
+        <h2>Categorias</h2>
         <div class="tablenav top">
             <div class="alignleft actions">
                 <a href="<?php echo admin_url('admin.php?page=ams_categories_create'); ?>">Add New</a>

@@ -74,6 +74,14 @@ function ams_menu() {
 	'manage_options', //capability
 	'ams_campaign_create', //menu slug
 	'ams_campaign_create'); //function
+	
+	add_submenu_page('ams_campaigns', //parent slug
+	'Listar campanhas', //page title
+	'Listar campanhas', //menu title
+	'manage_options', //capability
+	'ams_campaign_list', //menu slug
+	'ams_campaign_list'); //function
+
 
 
 	// ALL UPDATES

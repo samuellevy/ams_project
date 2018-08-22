@@ -32,7 +32,7 @@ function blogs_update() {
     ?>
     <link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/ams/style-admin.css" rel="stylesheet" />
     <div class="wrap">
-        <h2>Schools</h2>
+        <h2>Atualizar blog</h2>
 
         <?php if (isset($_POST['delete'])) { ?>
             <div class="updated"><p>School deleted</p></div>

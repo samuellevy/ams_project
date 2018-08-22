@@ -1,48 +1,52 @@
 <?php
+
+
 function ams_campaign_create() {
     global $wpdb;
+    $timestamp = mktime(date("H")-3, date("i"), date("s"), date("m"), date("d"), date("Y"));
     $name = '';
     //insert
-    // var_dump($_POST);
+    echo('<pre>');
+    var_dump($_POST);
+    echo('</pre>');
     if ($_POST!=null) {
-
-        if(isset($_FILES['file'])){
-            $pdf = $_FILES['file'];
-
-            // Use the wordpress function to upload
-            // file corresponds to the position in the $_FILES array
-            // 0 means the content is not associated with any other posts
-            $uploaded=media_handle_upload('file', 0);
-            // Error checking using WP functions
-            if(is_wp_error($uploaded)){
-                    echo "Error uploading file: " . $uploaded->get_error_message();
-            }else{
-                    // echo "File upload successful! ID: ".$uploaded;
-                    // echo wp_get_attachment_url($uploaded);
-            }
-        }
-
-        $table_name = $wpdb->prefix . "ams_anuncios";
+        $table_name = $wpdb->prefix . "ams_campaigns";
 
         $wpdb->insert(
             $table_name, //table
             array(
                 'title' => $_POST['title'],
-                'text' => $_POST['text'],
                 'url' => $_POST['url'],
                 'value' => $_POST['value'],
-                'category_id' => $_POST['category_id'],
-                'file_id' => $uploaded,
-                'file_url' => wp_get_attachment_url($uploaded),
+                'click_goal' => $_POST['click_goal'],
+                'blog_id' => $_POST['blog_id'],
+                'owner' => $_POST['owner'],
+                'obs' => $_POST['obs'],
+                'date' => gmdate("Y-m-d H:i:s", $timestamp)
             ),
             array('%s', '%s') //data format			
         );
+
+        $lastid = $wpdb->insert_id;
+        $ads = $_POST['ads'];
+
+        foreach($ads as $ad):
+            $wpdb->insert(
+                $wpdb->prefix . 'ams_campaigns_ads', //table
+                array(
+                    'campaign_id' => $lastid,
+                    'ad_id' => $ad,
+                ),
+                array('%s', '%s') //data format			
+            );
+        endforeach;
+       
         $message="Novo anúncio inserido com sucesso!";
     }
     ?>
     <link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/ams/style-admin.css" rel="stylesheet" />
     <div class="wrap">
-        <h2>Add New School</h2>
+        <h2>Iniciar nova campanha</h2>
         <?php if (isset($message)): ?><div class="updated"><p><?php echo $message; ?></p></div><?php endif; ?>
         <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" enctype="multipart/form-data">
             <table class='wp-list-table widefat fixed'>
@@ -58,6 +62,18 @@ function ams_campaign_create() {
                     <th class="ss-th-width">Valor</th>
                     <td><input type="text" name="value" class="ss-field-width" /></td>
                 </tr>
+                <tr>
+                    <th class="ss-th-width">Meta de clicks</th>
+                    <td><input type="text" name="click_goal" class="ss-field-width" /></td>
+                </tr>
+                <tr>
+                    <th class="ss-th-width">Pago por</th>
+                    <td><input type="text" name="owner" class="ss-field-width" /></td>
+                </tr>
+                <tr>
+                    <th class="ss-th-width">OBS</th>
+                    <td><textarea type="text" name="obs" class="ss-field-width"></textarea></td>
+                </tr>
                 <?php
                 $blogs = $wpdb->get_results("SELECT * from wp_ams_blogs");
                 $ads = $wpdb->get_results("SELECT * from wp_ams_anuncios");
@@ -65,7 +81,7 @@ function ams_campaign_create() {
                 <tr>
                     <th class="ss-th-width">Blog</th>
                     <td>
-                    <select name='category_id'>
+                    <select name='blog_id'>
                         <?php foreach($blogs as $blog):?>
                             <option value='<?=$blog->id;?>'><?=$blog->name;?></option>
                         <?php endforeach;?>
@@ -75,23 +91,13 @@ function ams_campaign_create() {
                 <tr>
                     <th class="ss-th-width">Anúncio</th>
                     <td>
-                    <select name='category_id' multiple>
+                    <select name='ads[]' multiple>
                         <?php foreach($ads as $ad):?>
                             <option value='<?=$ad->id;?>'>#<?=$ad->id;?> - <?=$ad->title;?></option>
                         <?php endforeach;?>
                     </select>
                     </td>
                 </tr>
-                <tr>
-                    <th class="ss-th-width">Texto</th>
-                    <td>
-                        <textarea name="text" class="ss-field-width"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type='file' id='file' name='file'/></td>
-                </tr>
-                
             </table>
             <input type='submit' value='Salvar' class='button'>
         </form>

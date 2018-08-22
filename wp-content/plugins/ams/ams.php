@@ -24,6 +24,7 @@ require_once(ROOTDIR . 'includes/categories_list.php');
 require_once(ROOTDIR . 'includes/categories_update.php');
 
 require_once(ROOTDIR . 'includes/campaign_create.php');
+require_once(ROOTDIR . 'includes/campaign_list.php');
 
 function install(){
     install_blog();

@@ -26,7 +26,7 @@ function ams_categories_update() {
     ?>
     <link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/ams/style-admin.css" rel="stylesheet" />
     <div class="wrap">
-        <h2>Categorias</h2>
+        <h2>Atualizar categoria</h2>
 
         <?php if (isset($_POST['delete'])) { ?>
             <div class="updated"><p>School deleted</p></div>
