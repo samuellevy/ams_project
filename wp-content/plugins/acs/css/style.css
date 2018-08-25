@@ -1,0 +1,15 @@
+.props{
+    display: flex;
+}
+.props_item{
+    background-color: red;
+    width: 165px;
+    margin: 5px;
+}
+.props_item img{
+    width:100%;
+}
+.props_item p{
+    font-size: 14px;
+    padding: 0 10px 10px;
+}
