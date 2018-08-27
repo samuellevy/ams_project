@@ -94,8 +94,8 @@ function ads_update() {
                         <?php if(isset($ad->file_url)):?>
                             <img src="<?=$ad->file_url?>"/>
                         <?php endif;?>
-                        <input type='text' name='file_url' value='<?=$ad->file_url?>'/>
-                        <input type='text' name='file_id' value='<?=$ad->file_id?>'/>
+                        <input type='hidden' name='file_url' value='<?=$ad->file_url?>'/>
+                        <input type='hidden' name='file_id' value='<?=$ad->file_id?>'/>
                         <input type='file' id='file' name='file'/>
                     </td>
                 </tr>

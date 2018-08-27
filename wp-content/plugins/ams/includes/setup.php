@@ -29,7 +29,7 @@ function ams_menu() {
 	'AMS - Anúncios', //menu title
 	'manage_options', //capabilities
 	'ams_ads', //menu slug
-	'blogs_list' //function
+	'ads_list' //function
     );
 
 	add_submenu_page('ams_ads', //parent slug
@@ -65,7 +65,7 @@ function ams_menu() {
 	'AMS - Campanhas', //menu title
 	'manage_options', //capabilities
 	'ams_campaigns', //menu slug
-	'ams_campaigns_list' //function
+	'ams_campaign_list' //function
 	);
 	
 	add_submenu_page('ams_campaigns', //parent slug
@@ -105,4 +105,13 @@ function ams_menu() {
 	'manage_options', //capability
 	'ads_update', //menu slug
 	'ads_update'); //function
+
+
+	// CLICK LIST
+	add_submenu_page(null, //parent slug
+	'Lista de clicks', //page title
+	'Lista de clicks', //menu title
+	'manage_options', //capability
+	'ams_clicks_list', //menu slug
+	'ams_clicks_list'); //function
 }

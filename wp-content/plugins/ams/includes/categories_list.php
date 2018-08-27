@@ -7,7 +7,7 @@ function ams_categories_list() {
         <h2>Categorias</h2>
         <div class="tablenav top">
             <div class="alignleft actions">
-                <a href="<?php echo admin_url('admin.php?page=ams_categories_create'); ?>">Add New</a>
+                <a href="<?php echo admin_url('admin.php?page=ams_categories_create'); ?>">Novo</a>
             </div>
             <br class="clear">
         </div>

@@ -45,7 +45,10 @@ function ams_campaign_list() {
                     <td class="manage-column ss-list-width"><?php echo $campaign->blog_id; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->owner; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->date; ?></td>
-                    <td><a href="<?php echo admin_url('admin.php?page=blogs_update&id=' . $campaign->id); ?>">Update</a></td>
+                    <td>
+                        <a href="<?php echo admin_url('admin.php?page=blogs_update&id=' . $campaign->id); ?>">Update</a>
+                        <a href="<?php echo admin_url('admin.php?page=ams_clicks_list&id=' . $campaign->id); ?>">Clicks</a>
+                </td>
                 </tr>
             <?php } ?>
         </table>

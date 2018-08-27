@@ -7,7 +7,7 @@ function ams_campaign_create() {
     $name = '';
     //insert
     echo('<pre>');
-    var_dump($_POST);
+    // var_dump($_POST);
     echo('</pre>');
     if ($_POST!=null) {
         $table_name = $wpdb->prefix . "ams_campaigns";

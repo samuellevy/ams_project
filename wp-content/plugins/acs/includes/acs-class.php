@@ -29,25 +29,36 @@
       if ( ! empty( $instance['title'] ) ) {
         echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
       }
+
+      $url = $instance['url'];
       
       // var_dump($this->getAds());
       // Widget Content Output
       // echo '<div class="g-ytsubscribe" data-channel="'.$instance['channel'].'" data-layout="'.$instance['layout'].'" data-count="'.$instance['count'].'"></div>';
       $count = (int)$instance['count'];
-      echo "<div class='props'>";
-      for($i=0;$i<$count;$i++){
-        echo "<div class='props_item'>
-          <img src='http://localhost/testt/img1.png' class=''/>
-          <p>Jovens descobriram uma forma de ganhar dinheiro na Netshoes</p>
-        </div>";
-      }   
-      echo "</div>";
+      $mydata = $this->getAds($url, $instance['token']);
+      echo('<div class="props">');
+
+      if((int)$mydata->clicks < (int)$mydata->goal){
+        foreach($mydata->ads as $item){
+          echo "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."'  target='_blank'>
+          <div class='props_item'>
+            <img src='".$item->img."' class=''/>
+            <p>".$item->description."</p>
+          </div></a>";
+        }
+      }
+      else{
+        echo('');
+      }
+      
+      echo('</div>');
 
       echo $args['after_widget']; // Whatever you want to display after widget (</div>, etc)
     }
 
-    public function getAds(){
-      $json = file_get_contents('http://localhost/testt/json.php');
+    public function getAds($url, $token){
+      $json = file_get_contents($url.'/wp-content/plugins/ams/json.php?token='.$token);
       $obj = json_decode($json);
       return $obj;
     }
@@ -60,6 +71,9 @@
      * @param array $instance Previously saved values from database.
      */
     public function form( $instance ) {
+      
+      $url = ! empty( $instance['url'] ) ? $instance['url'] : esc_html__( 'URL', 'acs_domain' );
+      
       $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Title', 'acs_domain' );
 
       $token = ! empty( $instance['token'] ) ? $instance['token'] : esc_html__( 'Token', 'acs_domain' ); 
@@ -67,6 +81,20 @@
       $count = ! empty( $instance['count'] ) ? $instance['count'] : esc_html__( '1', 'acs_domain' ); 
       ?>
       
+       <!-- TITLE -->
+       <p>
+        <label for="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>">
+          <?php esc_attr_e( 'URL:', 'acs_domain' ); ?>
+        </label> 
+
+        <input 
+          class="widefat" 
+          id="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>" 
+          name="<?php echo esc_attr( $this->get_field_name( 'url' ) ); ?>" 
+          type="text" 
+          value="<?php echo esc_attr( $url ); ?>">
+      </p>
+
        <!-- TITLE -->
        <p>
         <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -124,6 +152,8 @@
      */
     public function update( $new_instance, $old_instance ) {
       $instance = array();
+      $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
+      
       $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
       
       $instance['token'] = ( ! empty( $new_instance['token'] ) ) ? strip_tags( $new_instance['token'] ) : '';

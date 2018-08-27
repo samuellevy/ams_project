@@ -7,7 +7,7 @@ function ads_list() {
         <h2>Anúncios</h2>
         <div class="tablenav top">
             <div class="alignleft actions">
-                <a href="<?php echo admin_url('admin.php?page=ams_ads_create'); ?>">Add New</a>
+                <a href="<?php echo admin_url('admin.php?page=ams_ads_create'); ?>">Novo</a>
             </div>
             <br class="clear">
         </div>

@@ -7,7 +7,7 @@ function blogs_list() {
         <h2>Blogs</h2>
         <div class="tablenav top">
             <div class="alignleft actions">
-                <a href="<?php echo admin_url('admin.php?page=sinetiks_schools_create'); ?>">Add New</a>
+                <a href="<?php echo admin_url('admin.php?page=blogs_create'); ?>">Novo</a>
             </div>
             <br class="clear">
         </div>
