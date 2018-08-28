@@ -13,10 +13,11 @@ function ams_clicks_list() {
         <?php
         global $wpdb;
         $table_name = $wpdb->prefix . "ams_clicks";
+        $prefix = $wpdb->prefix;
 
-        $rows = $wpdb->get_results("SELECT clicks.id, campaign.title as campaign, ads.title as ad, clicks.ip, clicks.created FROM wp_ams_clicks as clicks 
-        JOIN wp_ams_campaigns as campaign ON campaign.id = clicks.campaign_id
-        JOIN wp_ams_anuncios as ads ON ads.id = clicks.ad_id
+        $rows = $wpdb->get_results("SELECT clicks.id, campaign.title as campaign, ads.title as ad, clicks.ip, clicks.created FROM ".$prefix."ams_clicks as clicks 
+        JOIN ".$prefix."ams_campaigns as campaign ON campaign.id = clicks.campaign_id
+        JOIN ".$prefix."ams_anuncios as ads ON ads.id = clicks.ad_id
         WHERE clicks.campaign_id = $id");
         ?>
         <table class='wp-list-table widefat fixed striped posts'>

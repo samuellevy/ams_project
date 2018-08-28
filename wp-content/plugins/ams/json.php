@@ -5,11 +5,13 @@ $token = $_GET['token'];
 require_once('../../../wp-load.php');
 global $wpdb;
 $table_name = $wpdb->prefix . "ams_anuncios";
-$rows = $wpdb->get_results("SELECT campaign.id, campaign.clicks, campaign.click_goal, wp_ams_campaigns_ads.id as ad_campaign_id, ads.id as ad_id,ads.title, ads.file_url, ads.title, ads.url, ads.text, ads.category_id, category.name
-FROM wp_ams_campaigns as campaign
-JOIN wp_ams_campaigns_ads ON campaign.id = wp_ams_campaigns_ads.campaign_id
-JOIN wp_ams_anuncios as ads ON wp_ams_campaigns_ads.ad_id = ads.id
-JOIN wp_ams_categories as category ON ads.category_id = category.id
+$prefix = $wpdb->prefix;
+
+$rows = $wpdb->get_results("SELECT campaign.id, campaign.clicks, campaign.click_goal, ".$prefix."ams_campaigns_ads.id as ad_campaign_id, ads.id as ad_id,ads.title, ads.file_url, ads.title, ads.url, ads.text, ads.category_id, category.name
+FROM ".$prefix."ams_campaigns as campaign
+JOIN ".$prefix."ams_campaigns_ads ON campaign.id = ".$prefix."ams_campaigns_ads.campaign_id
+JOIN ".$prefix."ams_anuncios as ads ON ".$prefix."ams_campaigns_ads.ad_id = ads.id
+JOIN ".$prefix."ams_categories as category ON ads.category_id = category.id
 WHERE campaign.token='$token'");
 
 ?>

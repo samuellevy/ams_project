@@ -3,6 +3,7 @@
 function ads_update() {
     global $wpdb;
     $table_name = $wpdb->prefix . "ams_anuncios";
+    $prefix = $wpdb->prefix;
     $id = $_GET["id"];
 
     if (isset($_POST['update'])) {

@@ -4,6 +4,7 @@
 function ams_campaign_create() {
     global $wpdb;
     $timestamp = mktime(date("H")-3, date("i"), date("s"), date("m"), date("d"), date("Y"));
+    $prefix = $wpdb->prefix;
     $name = '';
     //insert
     echo('<pre>');
@@ -76,8 +77,8 @@ function ams_campaign_create() {
                     <td><textarea type="text" name="obs" class="ss-field-width"></textarea></td>
                 </tr>
                 <?php
-                $blogs = $wpdb->get_results("SELECT * from wp_ams_blogs");
-                $ads = $wpdb->get_results("SELECT * from wp_ams_anuncios");
+                $blogs = $wpdb->get_results("SELECT * from ".$prefix."ams_blogs");
+                $ads = $wpdb->get_results("SELECT * from ".$prefix."ams_anuncios");
                 ?>
                 <tr>
                     <th class="ss-th-width">Blog</th>

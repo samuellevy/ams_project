@@ -1,6 +1,7 @@
 <?php
 function ams_ads_create() {
     global $wpdb;
+    $prefix = $wpdb->prefix;
     $name = '';
     //insert
     // var_dump($_POST);
@@ -59,7 +60,7 @@ function ams_ads_create() {
                     <td><input type="text" name="value" class="ss-field-width" /></td>
                 </tr>
                 <?php
-                $categories = $wpdb->get_results("SELECT * from wp_ams_categories");
+                $categories = $wpdb->get_results("SELECT * from ".$prefix."ams_categories");
                 ?>
                 <tr>
                     <th class="ss-th-width">Categoria</th>

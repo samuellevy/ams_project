@@ -39,8 +39,8 @@ function install(){
 
 function install_blog(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_blogs` (
+    $table_name = $wpdb->prefix . 'ams_blogs';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
         `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -59,8 +59,8 @@ function install_blog(){
     
 function install_ads(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_anuncios` (
+    $table_name = $wpdb->prefix . 'ams_anuncios';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
         `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -78,8 +78,8 @@ function install_ads(){
 
 function install_categories(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_categories` (
+    $table_name = $wpdb->prefix . 'ams_categories';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
         `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
         PRIMARY KEY (`id`)
@@ -91,8 +91,8 @@ function install_categories(){
 
 function install_campaigns(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_campaigns` (
+    $table_name = $wpdb->prefix . 'ams_campaigns';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
         `title` varchar(255) DEFAULT NULL,
         `url` varchar(255) DEFAULT NULL,
@@ -114,8 +114,8 @@ function install_campaigns(){
 
 function install_campaigns_ads(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_campaigns_ads` (
+    $table_name = $wpdb->prefix . 'ams_campaigns_ads';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
         `campaign_id` int(11) DEFAULT NULL,
         `ad_id` int(11) DEFAULT NULL,
@@ -129,8 +129,8 @@ function install_campaigns_ads(){
 
 function install_clicks(){
     global $wpdb;
-
-    $sql = "CREATE TABLE `wp_ams_clicks` (
+    $table_name = $wpdb->prefix . 'ams_clicks';
+    $sql = "CREATE TABLE `$table_name` (
         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
         `campaign_id` int(11) DEFAULT NULL,
         `ad_id` int(11) DEFAULT NULL,

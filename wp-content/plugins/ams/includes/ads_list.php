@@ -14,8 +14,9 @@ function ads_list() {
         <?php
         global $wpdb;
         $table_name = $wpdb->prefix . "ams_anuncios";
+        $prefix = $wpdb->prefix;
 
-        $rows = $wpdb->get_results("SELECT ads.*, category.name as category_name from wp_ams_anuncios as ads INNER JOIN wp_ams_categories as category ON ads.category_id=category.id");
+        $rows = $wpdb->get_results("SELECT ads.*, category.name as category_name from ".$prefix."ams_anuncios as ads INNER JOIN ".$prefix."ams_categories as category ON ads.category_id=category.id");
         ?>
         <table class='wp-list-table widefat fixed striped posts'>
             <tr>
