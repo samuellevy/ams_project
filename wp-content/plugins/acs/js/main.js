@@ -1,4 +1,4 @@
-console.log('YTS Loaded...');
+console.log('YTS Loaded... new');
 
 var widget_ads = {
     init: function(){
@@ -11,6 +11,8 @@ var widget_ads = {
             var campaign_id = $(this).attr('campaign-id');
             var ad_id = $(this).attr('ad-id');
             var ad_campaign_id = $(this).attr('ad-campaign-id');
+            var href = $(this).attr('href');
+            var from = $(this).attr('data-from');
 
             let data = JSON.stringify({
                 ad_campaign_id: ad_campaign_id,
@@ -18,13 +20,14 @@ var widget_ads = {
                 ad_id: ad_id,
             });
             
-            widget_ads.registerClick('/register.php', data).then((rest)=>{
+            widget_ads.registerClick(from,'/register.php', data).then((rest)=>{
                 // alert('enviado');
             });
+            window.open(href);
         });
     },
-    registerClick: function(url, body){
-        var url = 'http://localhost/ams_project/wp-content/plugins/ams'+url;
+    registerClick: function(from, url, body){
+        var url = from+'/wp-content/plugins/ams'+url;
         var object = {
             method: 'POST',
             headers: {

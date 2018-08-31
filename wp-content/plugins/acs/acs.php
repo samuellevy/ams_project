@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Acs Subs
-Plugin URI: http://traversymedia.com
-Description: Display YouTube sub button and count
-Version: 1.0.0
-Author: Brad Traversy
-Author URI: http://traversymedia.com
+Plugin Name: Acs
+Plugin URI: http://nokengo.com
+Description: Display ADS from AMS
+Version: 1.0.1
+Author: Samuel Levy
+Author URI: http://nokengo.com
 */
 
 // Exit if accessed directly
 if(!defined('ABSPATH')){
-  exit;
+  // exit;
 }
 
 // Load Scripts

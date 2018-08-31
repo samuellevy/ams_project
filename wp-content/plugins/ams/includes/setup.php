@@ -92,12 +92,12 @@ function ams_menu() {
 	'blogs_update', //menu slug
 	'blogs_update'); //function
 
-	add_submenu_page(null, //parent slug
-	'Update categorias', //page title
-	'Update categorias', //menu title
-	'manage_options', //capability
-	'ams_categories_update', //menu slug
-	'ams_categories_update'); //function
+	// add_submenu_page(null, //parent slug
+	// 'Update categorias', //page title
+	// 'Update categorias', //menu title
+	// 'manage_options', //capability
+	// 'ams_categories_update', //menu slug
+	// 'ams_categories_update'); //function
 
 	add_submenu_page(null, //parent slug
 	'Update ads', //page title
@@ -106,6 +106,12 @@ function ams_menu() {
 	'ads_update', //menu slug
 	'ads_update'); //function
 
+	add_submenu_page(null, //parent slug
+	'Update campaign', //page title
+	'Update campaign', //menu title
+	'manage_options', //capability
+	'ams_campaigns_update', //menu slug
+	'ams_campaigns_update'); //function
 
 	// CLICK LIST
 	add_submenu_page(null, //parent slug

@@ -41,7 +41,7 @@
 
       if((int)$mydata->clicks < (int)$mydata->goal){
         foreach($mydata->ads as $item){
-          echo "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."'  target='_blank'>
+          echo "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$instance['url']."'  target='_blank'>
           <div class='props_item'>
             <img src='".$item->img."' class=''/>
             <p>".$item->description."</p>

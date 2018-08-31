@@ -25,6 +25,7 @@ require_once(ROOTDIR . 'includes/categories_update.php');
 
 require_once(ROOTDIR . 'includes/campaign_create.php');
 require_once(ROOTDIR . 'includes/campaign_list.php');
+// require_once(ROOTDIR . 'includes/ams_campaigns_update.php');
 
 require_once(ROOTDIR . 'includes/clicks_list.php');
 

@@ -29,7 +29,7 @@ function ams_campaign_list() {
                 <th class="manage-column ss-list-width">Título</th>
                 <th class="manage-column ss-list-width">Url</th>
                 <th class="manage-column ss-list-width">Valor</th>
-                <th class="manage-column ss-list-width">Meta de clicks</th>
+                <th class="manage-column ss-list-width">Clicks/Meta</th>
                 <th class="manage-column ss-list-width">Blog</th>
                 <th class="manage-column ss-list-width">Responsável pagamento</th>
                 <th class="manage-column ss-list-width">Data</th>
@@ -41,12 +41,13 @@ function ams_campaign_list() {
                     <td class="manage-column ss-list-width"><?php echo $campaign->title; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->url; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->value; ?></td>
-                    <td class="manage-column ss-list-width"><?php echo $campaign->click_goal; ?></td>
+                    <td class="manage-column ss-list-width"><?php echo $campaign->clicks; ?>/<?php echo $campaign->click_goal; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->blog_id; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->owner; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $campaign->date; ?></td>
+                    <td class="manage-column ss-list-width"><?php echo $campaign->token; ?></td>
                     <td>
-                        <a href="<?php echo admin_url('admin.php?page=blogs_update&id=' . $campaign->id); ?>">Update</a>
+                        
                         <a href="<?php echo admin_url('admin.php?page=ams_clicks_list&id=' . $campaign->id); ?>">Clicks</a>
                 </td>
                 </tr>

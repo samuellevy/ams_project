@@ -27,7 +27,6 @@ function blogs_list() {
                 <th class="manage-column ss-list-width">E-mail</th>
                 <th class="manage-column ss-list-width">WhatsApp</th>
                 <th class="manage-column ss-list-width">Dados Bancários</th>
-                <th class="manage-column ss-list-width">Token</th>
                 <th>&nbsp;</th>
             </tr>
             <?php foreach ($rows as $row) { ?>
@@ -40,7 +39,6 @@ function blogs_list() {
                     <td class="manage-column ss-list-width"><?php echo $row->email; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $row->whatsapp; ?></td>
                     <td class="manage-column ss-list-width"><?php echo $row->bank; ?></td>
-                    <td class="manage-column ss-list-width"><?php echo $row->token; ?></td>
                     <td><a href="<?php echo admin_url('admin.php?page=blogs_update&id=' . $row->id); ?>">Update</a></td>
                 </tr>
             <?php } ?>
