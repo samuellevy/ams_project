@@ -18,6 +18,7 @@ class Acs{
     public function printAds () {
         $url = '';
         $token = '';
+        $qtt = 0;
         
         global $wpdb;
         $prefix = $wpdb->prefix;
@@ -27,19 +28,23 @@ class Acs{
         if(isset($configs[0])){
             $url = $configs[0]->url;
             $token = $configs[0]->token;
+            $qtt = $configs[0]->count;
         }
         
         $mydata = $this->getAds($url, $token);
         $extra_stuff = '<div class="props_wrapper"><div class="props">';
 
         if((int)$mydata->clicks < (int)$mydata->goal){
-            foreach($mydata->ads as $item){
-            $extra_stuff .= "<a href='".$item->url."' class='props_item_click' style='display: none;' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$url."'  target='_blank'>
-            <div class='props_item'>
-                <img src='".$item->img."' class=''/>
-                <p class='title'>".$item->title."</p>
-                <p>".$item->description."</p>
-            </div></a>";
+            foreach($mydata->ads as $key=>$item){
+                $extra_stuff .= "<a href='".$item->url."' class='props_item_click' style='display: none;' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$url."'  target='_blank'>
+                <div class='props_item'>
+                    <img src='".$item->img."' class=''/>
+                    <p class='title'>".$item->title."</p>
+                    <p>".$item->description."</p>
+                </div></a>";
+                if($key==($qtt-1)){
+                    break;
+                }
             }
         }
         else{

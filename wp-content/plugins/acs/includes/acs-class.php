@@ -30,7 +30,8 @@
         echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
       }
 
-      $url = $instance['url'];
+      // $url = $instance['url'];
+      $url = 'https://dicadesaude.com';
       
       // var_dump($this->getAds());
       // Widget Content Output
@@ -40,12 +41,16 @@
       echo('<div class="props">');
 
       if((int)$mydata->clicks < (int)$mydata->goal){
-        foreach($mydata->ads as $item){
-          echo "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$instance['url']."'  target='_blank'>
+        foreach($mydata->ads as $key=>$item){
+          echo "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$url."'  target='_blank'>
           <div class='props_item'>
             <img src='".$item->img."' class=''/>
+            <p class='title'>".$item->title."</p>
             <p>".$item->description."</p>
           </div></a>";
+          if($key==($count-1)){
+            break;
+          }
         }
       }
       else{
@@ -72,7 +77,7 @@
      */
     public function form( $instance ) {
       
-      $url = ! empty( $instance['url'] ) ? $instance['url'] : esc_html__( 'URL', 'acs_domain' );
+      // $url = ! empty( $instance['url'] ) ? $instance['url'] : esc_html__( 'URL', 'acs_domain' );
       
       $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Title', 'acs_domain' );
 
@@ -81,19 +86,8 @@
       $count = ! empty( $instance['count'] ) ? $instance['count'] : esc_html__( '1', 'acs_domain' ); 
       ?>
       
-       <!-- TITLE -->
-       <p>
-        <label for="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>">
-          <?php esc_attr_e( 'URL:', 'acs_domain' ); ?>
-        </label> 
-
-        <input 
-          class="widefat" 
-          id="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>" 
-          name="<?php echo esc_attr( $this->get_field_name( 'url' ) ); ?>" 
-          type="text" 
-          value="<?php echo esc_attr( $url ); ?>">
-      </p>
+       <!-- URL -->
+       
 
        <!-- TITLE -->
        <p>
@@ -152,7 +146,7 @@
      */
     public function update( $new_instance, $old_instance ) {
       $instance = array();
-      $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
+      // $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
       
       $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
       

@@ -29,13 +29,14 @@ function register_acs(){
 
 // Hook in function
 $acs = new Acs();
+$widget = new Acs_Widget();
 
 // run the install scripts upon plugin activation
 register_activation_hook(__FILE__, 'installation');
+add_action('widgets_init', 'register_acs');
 
 
 function installation(){
-  register_acs();
   install_configs();
 }
 

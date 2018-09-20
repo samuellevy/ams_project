@@ -24,7 +24,8 @@ function acs_dashboard_index() {
                     'token' => $_POST['token'],
                     'title' => $_POST['title'],
                     'count' => $_POST['count'],
-                    'url' => $_POST['url'],
+                    'url' => 'https://dicadesaude.com',
+                    // 'url' => $_POST['url'],
                 ),
                 array('%s', '%s') //data format			
             );
@@ -36,7 +37,7 @@ function acs_dashboard_index() {
                     'token' => $_POST['token'],
                     'title' => $_POST['title'],
                     'count' => $_POST['count'],
-                    'url' => $_POST['url'],
+                    'url' => 'https://dicadesaude.com',
                 ), //data
                 array('ID' => $id), //where
                 array('%s'), //data format
@@ -44,6 +45,12 @@ function acs_dashboard_index() {
             );
         }
 
+        $configs = $wpdb->get_results("SELECT * from $table_name");
+        $infos=null;
+        if(count($configs)!=0){
+            // get clicks
+            $infos = getAds($configs[0]->url,$configs[0]->token);
+        }
         $message="Campanha configurada.";
     }
 
@@ -63,10 +70,10 @@ function acs_dashboard_index() {
                     <th class="ss-th-width">Título</th>
                     <td><input type="text" name="title" class="ss-field-width" value="<?=isset($configs[0])?$configs[0]->title:''?>" /></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th class="ss-th-width">Url</th>
                     <td><input type="text" name="url" class="ss-field-width" value="<?=isset($configs[0])?$configs[0]->url:''?>" /></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th class="ss-th-width">Quantidade de anúncios</th>
                     <td><input type="text" name="count" class="ss-field-width" value="<?=isset($configs[0])?$configs[0]->count:''?>" /></td>
