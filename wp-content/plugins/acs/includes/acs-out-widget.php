@@ -1,4 +1,9 @@
 <?php
+/**
+ * Name: ACS - Ads Content System
+ * Author: Samuel Levy
+ * Version: 1.0
+ */
 
 class Acs{
     public function __construct(){
@@ -11,8 +16,19 @@ class Acs{
     }
 
     public function printAds () {
-        $url = 'http://dicadesaude.com';
-        $token = '5ba0125cbbb28';
+        $url = '';
+        $token = '';
+        
+        global $wpdb;
+        $prefix = $wpdb->prefix;
+        $table_name = $wpdb->prefix . "acs_configs";
+        $configs = $wpdb->get_results("SELECT * from $table_name");
+
+        if(isset($configs[0])){
+            $url = $configs[0]->url;
+            $token = $configs[0]->token;
+        }
+        
         $mydata = $this->getAds($url, $token);
         $extra_stuff = '<div class="props_wrapper"><div class="props">';
 

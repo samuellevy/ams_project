@@ -37,7 +37,8 @@ if($count_click==0){
     // echo $clicks;
     $clicks++;
     $wpdb->update(
-        '".$prefix."ams_campaigns_ads', //table
+        // '".$prefix."ams_campaigns_ads', //table
+        $prefix."ams_campaigns_ads", //table
         array(
             'clicks' => $clicks,
         ), //data
@@ -52,7 +53,7 @@ if($count_click==0){
     // echo $campaign_clicks;
     $campaign_clicks++;
     $wpdb->update(
-        '".$prefix."ams_campaigns', //table
+        $prefix.'ams_campaigns', //table
         array(
             'clicks' => $campaign_clicks,
         ), //data

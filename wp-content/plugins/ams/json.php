@@ -12,7 +12,7 @@ FROM ".$prefix."ams_campaigns as campaign
 JOIN ".$prefix."ams_campaigns_ads ON campaign.id = ".$prefix."ams_campaigns_ads.campaign_id
 JOIN ".$prefix."ams_anuncios as ads ON ".$prefix."ams_campaigns_ads.ad_id = ads.id
 JOIN ".$prefix."ams_categories as category ON ads.category_id = category.id
-WHERE campaign.token='$token'");
+WHERE campaign.token='$token' ORDER BY RAND()");
 
 ?>
 {

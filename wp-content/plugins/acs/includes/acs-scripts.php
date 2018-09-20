@@ -1,4 +1,3 @@
-
 <?php
   // Add Scripts
   function acs_add_scripts(){
@@ -13,5 +12,8 @@
     wp_register_script('google', 'https://apis.google.com/js/platform.js');
     wp_enqueue_script('google');
   }
+
+  require_once(plugin_dir_path(__FILE__).'/admin/setup.php');
+  require_once(plugin_dir_path(__FILE__).'/admin/acs_dashboard_index.php');
 
   add_action('wp_enqueue_scripts', 'acs_add_scripts');
