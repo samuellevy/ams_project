@@ -8,6 +8,7 @@ var widget_ads = {
     },
     mount: function(){
         $('main.site-main').append($('.props_wrapper').html());
+        $('.props_item_click').show();
     },
     listenClick: function(){
         $('.props_item_click').click(function(event){

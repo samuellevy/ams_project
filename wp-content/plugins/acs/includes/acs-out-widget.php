@@ -34,7 +34,7 @@ class Acs{
 
         if((int)$mydata->clicks < (int)$mydata->goal){
             foreach($mydata->ads as $item){
-            $extra_stuff .= "<a href='".$item->url."' class='props_item_click' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$url."'  target='_blank'>
+            $extra_stuff .= "<a href='".$item->url."' class='props_item_click' style='display: none;' campaign-id='".$item->id."' ad-id='".$item->ad_id."' ad-campaign-id='".$item->ad_campaign_id."' data-from='".$url."'  target='_blank'>
             <div class='props_item'>
                 <img src='".$item->img."' class=''/>
                 <p class='title'>".$item->title."</p>

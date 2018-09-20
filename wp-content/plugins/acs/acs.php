@@ -29,3 +29,28 @@ function register_acs(){
 
 // Hook in function
 $acs = new Acs();
+
+// run the install scripts upon plugin activation
+register_activation_hook(__FILE__, 'installation');
+
+
+function installation(){
+  register_acs();
+  install_configs();
+}
+
+function install_configs(){
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'acs_configs';
+  $sql = "CREATE TABLE `$table_name` (
+      `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+      `token` varchar(255) DEFAULT NULL,
+      `title` varchar(255) DEFAULT NULL,
+      `count` int(11) DEFAULT NULL,
+      `url` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+      
+      require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+      dbDelta($sql);
+}
