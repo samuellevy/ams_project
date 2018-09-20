@@ -3,7 +3,11 @@ console.log('YTS Loaded... new');
 var widget_ads = {
     init: function(){
         // alert('widget');
+        widget_ads.mount();
         widget_ads.listenClick();
+    },
+    mount: function(){
+        $('main.site-main').append($('.props_wrapper').html());
     },
     listenClick: function(){
         $('.props_item_click').click(function(event){

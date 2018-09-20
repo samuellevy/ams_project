@@ -1,14 +1,30 @@
+.props_wrapper{
+    display: none;
+}
+
+main .props_wrapper{
+    display: block;
+}
+
 .props{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-.props_item{
-    width: 165px;
+.props_item {
+    width: 160px;
     margin: 5px;
 }
+
 .props_item img{
     width:100%;
 }
+.props_item p.title{
+    font-size: 13px;
+    padding: 0 0 0;
+    font-weight: bold;
+}
 .props_item p{
     font-size: 13px;
-    padding: 0 10px 10px;
+    padding: 0 0 0;
 }

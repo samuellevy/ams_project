@@ -19,10 +19,13 @@ require_once(plugin_dir_path(__FILE__).'/includes/acs-scripts.php');
 // Load Class
 require_once(plugin_dir_path(__FILE__).'/includes/acs-class.php');
 
+// Out widget
+require_once(plugin_dir_path(__FILE__).'includes/acs-out-widget.php');
+
 // Register Widget
 function register_acs(){
   register_widget('Acs_Widget');
 }
 
 // Hook in function
-add_action('widgets_init', 'register_acs');
+$acs = new Acs();
