@@ -7,10 +7,18 @@ main .props_wrapper{
 }
 
 .props{
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    margin: 20px 0 0;
+    max-width: 800px;
 }
+
+.props_item_click{
+    display: inline-flex;
+}
+
 .props_item {
     width: 160px;
     margin: 5px;

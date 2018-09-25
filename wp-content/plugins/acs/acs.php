@@ -3,7 +3,7 @@
 Plugin Name: Acs
 Plugin URI: http://nokengo.com
 Description: Display ADS from AMS
-Version: 1.0.1
+Version: 1.0.2 - 24/09[2018]
 Author: Samuel Levy
 Author URI: http://nokengo.com
 */
@@ -29,6 +29,7 @@ function register_acs(){
 
 // Hook in function
 $acs = new Acs();
+echo('TESTE');
 $widget = new Acs_Widget();
 
 // run the install scripts upon plugin activation

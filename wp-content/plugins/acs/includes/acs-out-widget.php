@@ -10,9 +10,15 @@ class Acs{
         // add_filter('after_main_open_tag', array($this, 'printAds'));
         // $this->printAds();
         if( !is_admin() ){
-            add_filter('pre_get_posts', array($this, 'printAds'));
-            // add_filter('pre_get_posts','my_filter_the_search',10,1);
+            // add_filter('after_main_open_tag', array($this, 'printAds'));
+            add_action('wp_enqueue_scripts',[$this, 'printAds'],10,1);
+            add_action( 'the_post', [$this, 'define_posts'] );
+            // echo $this->printAds();
         }
+    }
+    public function define_posts(){
+        $post = get_post();
+        echo "<i class='mark_post' data-post='".$post->ID."' style='display: none;'></i>";
     }
 
     public function printAds () {
@@ -53,7 +59,7 @@ class Acs{
         
         $extra_stuff .= '</div></div>';
         
-        // return $content.$extra_stuff ;
+        // return $extra_stuff ;
         echo $extra_stuff;
 
         // return $content;

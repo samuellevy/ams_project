@@ -6,7 +6,7 @@
     // Add Main JS
 
     wp_enqueue_script('acs-main-jquery', 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js');
-    wp_enqueue_script('acs-main-script', plugins_url(). '/acs/js/main.js', '', '0.20');
+    wp_enqueue_script('acs-main-script', plugins_url(). '/acs/js/main.js', '', '0.21');
 
     // Add Google Script
     wp_register_script('google', 'https://apis.google.com/js/platform.js');

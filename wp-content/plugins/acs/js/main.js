@@ -7,7 +7,9 @@ var widget_ads = {
         widget_ads.listenClick();
     },
     mount: function(){
-        $('main.site-main').append($('.props_wrapper').html());
+        console.log($('.mark_post').parent().attr('id'));
+        main_element = $('.mark_post').parent();
+        main_element.append($('.props_wrapper').html());
         $('.props_item_click').show();
     },
     listenClick: function(){
